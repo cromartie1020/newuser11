@@ -1,0 +1,33 @@
+{% extends 'learning/base.html' %}
+
+{% block content %}
+  <h2>Topic:</h2>
+    {{ topic }}
+  <ul>  
+  {% for entry in entries %}
+    <li>
+       <p>
+          {{ entry.date_added|date:'M d, Y H:i'  }}  
+       </p>  
+   
+        <p>
+            {{ entry.text|linebreaks }}
+
+        </p>
+        <p>
+          <a href="{% url 'edit_entry' entry.id %}">Edit entry</a>
+        </p>
+
+    </li>  
+   {% empty %}
+    <li>
+        There are no entries for this topic yet. 
+    </li>
+     
+   {% endfor %}
+   <p>
+      <a href="{% url 'new_entry' topic.id %}">Add an entry.</a>
+    </p>
+     
+  </ul>  
+{% endblock content %}

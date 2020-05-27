@@ -1,0 +1,8 @@
+{% extends 'learning/base.html' %}
+{% block content %}
+<form action="{% url 'new_topic' %}" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>Enter a new topic.</button>
+</form>
+{% endblock content %}
